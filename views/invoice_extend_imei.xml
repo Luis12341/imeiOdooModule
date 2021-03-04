@@ -1,0 +1,30 @@
+<odoo>
+	<data>
+		<template id="invoice_sale_extend_imei_report" inherit_id="sale.report_saleorder_document">
+			<xpath expr="//table/thead//th[@name='th_description']" position="after">
+				<th name="th_imei" class="text-left">Imei</th>
+			</xpath>
+			<xpath expr="//table/tbody//td[@name='td_name']" position="after">
+				<td name="td_imei" >
+          <t t-foreach="line.imeisProduct" t-as="imei">
+            <span t-field="imei.name"/> <br/>
+          </t>
+        </td>
+			</xpath>
+		</template>
+
+		<template id="invoice_sale_extend_imei_report_account_movement" inherit_id="account.report_invoice_document">
+			<xpath expr="//table/thead//th[@name='th_description']" position="after">
+				<th name="th_imei" class="text-left">Imei</th>
+			</xpath>
+			<xpath expr="//table/tbody//td[@name='account_invoice_line_name']" position="after">
+				<td name="td_imei" >
+          <t t-foreach="line.imeisProduct" t-as="imei">
+            <span t-field="imei.name"/> <br/>
+          </t>
+        </td>
+			</xpath>
+		</template>
+	</data>
+</odoo>
+ 

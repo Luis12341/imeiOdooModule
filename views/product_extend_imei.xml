@@ -1,0 +1,16 @@
+<odoo>
+  <data>
+    <record id="product_imei_extend_view" model="ir.ui.view">
+        <field name="name">view.imei.product</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+          <xpath expr="//notebook" position="inside">
+              <page string="Imeis" >
+                <field name="imeis" />
+              </page>
+          </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

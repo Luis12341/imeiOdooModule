@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <act_window id="add_imei_action" name="Crear imeis" res_model="product.imei.wz" binding_model="product.template" target="new" view_mode="form"/>
+
+    <record id="add_imei_wz" model="ir.ui.view">
+      <field name="name">product.imei.form</field>
+      <field name="model">product.imei.wz</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Agregar imei">
+              <field name="passed" invisible="1"/>
+              <field name="product_id" readonly="1"/>
+              <field name="numberOfImeisWithoutAdd" readonly="1"/>
+              <field name="numberOfImeisForAdd" readonly="1"/>
+              <field name="imeis"/>
+            </group>
+            <div attrs="{'invisible': [('passed','=', True)]}" t-if="unsubscribe_error" class="alert alert-danger text-center" role="alert">
+                <p>No se pueden agregar mas Imeis de los disponibles para agregar.</p>
+                <p t-esc="unsubscribe_error"/>
+            </div>
+          </sheet>
+          <footer>
+            <button string="Guardar" name="create_imeis" type="object" class="btn-primary" attrs="{'invisible': [('passed','=', False)]}"/>
+            <button string="Cerrar" class="btn-secondary" special="cancel" />
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="add_imei_text_wz" model="ir.ui.view">
+      <field name="name">product.imei.text.form</field>
+      <field name="model">product.imei.add.wz</field>
+      <field name="arch" type="xml">
+        <form string="Agregar un Imei">
+          <sheet>
+            <group string="Escriba un Imei">
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+</odoo>

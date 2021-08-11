@@ -1,0 +1,15 @@
+<odoo>
+	<data>
+		<record id="sale_imei_extend_view" model="ir.ui.view">
+			<field name="name">view.imei.product</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+					<field name="imeisProduct" widget="many2many_tags" options="{'no_create': True,'no_create_edit': True}" domain="[('product_id', '=', product_product_id), ('sale_order_line_id','=',False), ('account_order_line_id','=',False),('company_id','=',allowed_company_ids[0])]" attrs="{'readonly':[('product_updatable','=',False)]}"  />
+					<field name="product_product_id" invisible="1"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>
